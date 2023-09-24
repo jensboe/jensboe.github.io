@@ -4,3 +4,14 @@ copyright:
     template: Dieser Eintrag steht unter :LICENSE_NAME.
     name: Urheberrecht
     link: https://www.gesetze-im-internet.de/urhg/
+
+df:
+  post:
+    strftime: "%d.%m.%Y"
+    dayjs: "D.M.YYYY"
+  archives:
+    strftime: "%l"
+    dayjs: "M"
+post:
+  read_time:
+      prompt: Lesezeit
