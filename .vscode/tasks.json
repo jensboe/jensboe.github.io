@@ -6,7 +6,7 @@
         {
             "label": "jekyll",
             "type": "shell",
-            "command": "bundle exec jekyll serve --livereload",
+            "command": "bundle exec jekyll serve --livereload --future --draft",
             "problemMatcher": []
         }
     ]
