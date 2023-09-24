@@ -2,7 +2,7 @@
 layout: post
 title:  "Zugerkennung ohne weitere Sensoren"
 date:   2023-09-25 8:00
-categories: Elektronik Modellbahn
+categories: Modellbahn
 mermaid: true
 tags: Modellbahn Theorie Software
 ---
