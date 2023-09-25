@@ -9,9 +9,7 @@ df:
   post:
     strftime: "%d.%m.%Y"
     dayjs: "D.M.YYYY"
-  archives:
-    strftime: "%l"
-    dayjs: "M"
+
 post:
   read_time:
       prompt: Lesezeit
