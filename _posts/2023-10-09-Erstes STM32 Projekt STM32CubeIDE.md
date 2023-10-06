@@ -14,8 +14,7 @@ Danach wird geprüft in wie weit man mit C++ statt mit C entwickeln kann und die
 
 Aber fangen wir ersteinmal vorne an.
 
-> Die Schritte in diesem Tutorial sind auch in Github zu finden.
-<https://github.com/jensboe/STM32FirstSteps>
+> Die Schritte in diesem Tutorial sind auch in Github zu finden. <https://github.com/jensboe/STM32FirstSteps>
 {: .prompt-tip }
 
 ## Neues Projekt in STM32CubeIDE anlegen
