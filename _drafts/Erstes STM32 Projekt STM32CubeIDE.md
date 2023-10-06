@@ -5,16 +5,16 @@ date:   2023-10-06
 categories: STM32
 ---
 
-Ich verfüge unter anderem über ein NUCLEO-F446ZE. Dieses werde ich in einer kleinen Serie zuerst mit dem STM32CubeIDE in Betrieb nehmen und ein kleines Blink-Projekt erstellen und debuggen.
-Im Weiterem Verlauf soll dann zuerst auf das STM32CubeIDE verzichtet werden und durch das Visual Studio Code eingesetzt werden.
+Ich verfüge unter anderem über ein NUCLEO-F446ZE.
+Dieses werde ich in einer kleinen Serie zuerst mit dem STM32CubeIDE in Betrieb nehmen und ein kleines Blink-Projekt erstellen und debuggen.
+Im weiterem Verlauf soll dann zuerst auf das STM32CubeIDE verzichtet werden und durch das Visual Studio Code eingesetzt werden.
 Da ich grundsätzlich mit git, einem Version Control System arbeite, plane ich im weiteren Verlauf, die STM32 HAL und die CMSIS nicht als Kopie sondern als Submodul einzubinden.
 
 Danach wird geprüft in wie weit man mit C++ statt mit C entwickeln kann und die STM32 HAL durch eine eigene C++-HAL ersetzt werden.
 
 Aber fangen wir ersteinmal vorne an.
 
-
-> Die Schirtte in diesem Tutorial sind auch in Github zu finde.
+> Die Schritte in diesem Tutorial sind auch in Github zu finde.
 <https://github.com/jensboe/STM32FirstSteps>
 {: .prompt-tip }
 
