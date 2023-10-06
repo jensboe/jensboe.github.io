@@ -14,7 +14,7 @@ Danach wird geprüft in wie weit man mit C++ statt mit C entwickeln kann und die
 
 Aber fangen wir ersteinmal vorne an.
 
-> Die Schritte in diesem Tutorial sind auch in Github zu finde.
+> Die Schritte in diesem Tutorial sind auch in Github zu finden.
 <https://github.com/jensboe/STM32FirstSteps>
 {: .prompt-tip }
 
@@ -26,8 +26,7 @@ Dies erspart die Konfiguration der Pins.
 
 In den Targeted Languages habe ich `C++` angegeben, das Projekt wird ein `Executable` und als Typ habe ich `STM32Cube` ausgewählt.
 
-![Im gezeigtem Target Selector kann aus MCU/MPU, Boards und Beispielen ein Target ausgewählt werden](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/target_selector
-.jpg)
+![Im gezeigtem Target Selector kann aus MCU/MPU, Boards und Beispielen ein Target ausgewählt werden](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/target_selector.jpg)
 _Target selection_
 
 Auf der nächsten Seite wird das Framework Package ausgewählt und man kann einstellen wie die library files eingebunden werden.
@@ -38,8 +37,7 @@ Das will ich.
 Im Anschluss öffnet sich das Projekt und die `Pinout & Configuration`.
 Hier kann die Pin Belegung nachvollzogen und geändert werden.
 
-![Pinout Configuration zeigt den Prozessor in einer Draufsicht und koloriert die Pins entsprechend ihrer Funktion.](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/pinout_configuration
-.jpg)
+![Pinout Configuration zeigt den Prozessor in einer Draufsicht und koloriert die Pins entsprechend ihrer Funktion.](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/pinout_configuration.jpg)
 _Pinout & Configuration_
 
 Neben `Pinout & Configuration` gibt es zahlreiche weitere Einstellungen.
@@ -56,8 +54,7 @@ Der Build-Prozess startet und STM32CubeIDE will daraufhin eine neue Ansicht öff
 Ich stimme dem zu.
 Daraufhin (wenn man das Board angeschlossen hat) wird die `main.c` Datei geöffnet und eine grüne Hervorhebung zeigt an, an welcher Stelle das Programm gestoppt wurde.
 
-![Grüne Hervorhebung der 1.
-Instruktion an der der Debugger anhält.](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/debug_firststop.jpg)
+![Grüne Hervorhebung der 1. Instruktion an der der Debugger anhält.](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/debug_firststop.jpg)
 _Debugger hält an erster Instruction der main function_
 
 Mit `Step Into` (`F5`) , `Step Over` (`F6`), `Resume` (`F85`) und `Suspend` kann der Debugger gesteuert werden.
