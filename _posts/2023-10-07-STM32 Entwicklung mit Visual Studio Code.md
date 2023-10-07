@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "STM32 Entwicklung mit Visual Studio Code"
-date: 2023-10-06 20:00
+date: 2023-10-07 15:40
 categories: STM32
 ---
 
