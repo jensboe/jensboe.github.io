@@ -6,7 +6,7 @@ categories: STM32
 ---
 
 STM32CubeIDE basiert auf Eclipse, die IDE hat schon über 20 Jahre auf dem Buckel und wirkte auf mich schon immer sehr klobig, allerdings immer noch besser als Keil
-Visual Studio Code verwende ich schon in anderen Bereichen (unter anderem um diesen Blog zu füllen) und ist aktuell mein favorisierter Editor/IDE für alles.
+Visual Studio Code (VS Code) verwende ich schon in anderen Bereichen (unter anderem um diesen Blog zu füllen) und ist aktuell mein favorisierter Editor/IDE für alles.
 
 Anfang des Jahres brachte STMicroelectronics die [STM32 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension) heraus. Mit ihr soll es sehr einfach sein.
 
@@ -46,5 +46,58 @@ Das Erstellen der Binaries erfolgt einfach per Knopfdruck auf `F7`.
 
 # Debug
 
-Mit `F5` wird der Debugger gestartet. Anders als beim STM32CubeIDE hät der Debugger nicht in der `main`-Funktion, sondern im `Reset_Handler` der Datei `startup_stm32f446zetx.s`.
-Aus diesem Grund habe ich mir einen manuellen Breakpoint in der `main`-Funktion, gesetzt, in dieser landet der Debugger nach einem erneutem Drücken von `F5`.
+Mit `F5` wird der Debugger gestartet.
+Anders als beim STM32CubeIDE hät der Debugger nicht in der `main`-Funktion, sondern im `Reset_Handler` der Datei `startup_stm32f446zetx.s`.
+Aus diesem Grund habe ich mir einen manuellen Breakpoint in der `main`-Funktion gesetzt, in dieser landet der Debugger nach einem erneutem Drücken von `F5`.
+Will man dieses Verhalten ändern, kann in der Datei `.vscode\launch.json` der Wert `"stopAtConnect": true` auf `"stopAtConnect": false` gesetzt werden.
+
+![Debugansicht in Visual Studio Code](/assets/posts/STM32EntwicklungmitVisualStudioCode/debugging.jpg)
+_Debugansicht in Visual Studio Code, auf der linken Seite werden die lokale Variablen, CPU-Register aber auch Peripherie-Register angzeigt und modifiziert werden. Zusätzlich ist auch eine Beschreibung der Register enthalten._
+
+
+# Blick hinter die Kulissen
+
+Bei der Umwandlung in ein VS Code Projekt werden eine vielzahl von Dateien erstellt.
+`.vscode` enthält dabei Konfigurationsdateien für VS Code, `tasks.json` enthält z.B. den Build-Task, und`launch.json` die Konfiguration des Bootloaders.
+
+Deutlich interessanter ist der Aufbau der Cmake Dateien.
+`CMakeLists.txt` enthält nur den Projektnamen, erzeugt eine executable und fügt dieser st_target_properties hinzu.
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+
+project("STM32FirstSteps" C CXX ASM)
+
+include(cmake/st-project.cmake)
+
+add_executable(${PROJECT_NAME})
+add_st_target_properties(${PROJECT_NAME})
+```
+
+`cmake\st-project.cmake` enthält die Funktion `add_st_target_properties`.
+Diese enthält compile und link definitions und options, include directories und eine Auflistung aller verwendeten source files.
+Eine statische Bibliothek für z.B. die STM HAL wird nicht erstellt.
+
+Bei den optionen und definitions werden  [cmake-generator-expressions](https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html) verwendet.
+Warum diese verwendet werden, erschließt sich mir nicht.
+`DEBUG` wird z.B. in jeder Debug Konfiguration gesetzt, ganz unabhängig von der Sprache.
+`STM32F446xx` und `USE_HAL_DRIVER` immer, außer es handelt sich im eine  Assembler Datei.
+Diese Flags schaden bei Assembler sicherlich auch nicht.
+
+```cmake
+target_compile_definitions(
+    ${TARGET_NAME} PRIVATE
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:ASM>>:DEBUG>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:C>>:DEBUG>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:C>>:USE_HAL_DRIVER>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:C>>:STM32F446xx>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>>:DEBUG>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>>:USE_HAL_DRIVER>"
+    "$<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>>:STM32F446xx>"
+    "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:C>>:USE_HAL_DRIVER>"
+    "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:C>>:STM32F446xx>"
+    "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:CXX>>:USE_HAL_DRIVER>"
+    "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<COMPILE_LANGUAGE:CXX>>:STM32F446xx>"
+)
+```
+In einen späterem Artikel werde ich die Cmake Dateien aufräumen.
