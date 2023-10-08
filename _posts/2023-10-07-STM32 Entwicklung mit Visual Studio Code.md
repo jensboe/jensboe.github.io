@@ -82,4 +82,4 @@ target_compile_definitions(
 )
 ```
 
-In einem zukünftigen Artikel werde ich die CMake-Dateien optimieren.
+In einem nachfolgendem [Artikel]({%post_url 2023-10-08-Cmake aufräumen und git submodule nutzen %}) habe ich die CMake-Dateien optimieren.
