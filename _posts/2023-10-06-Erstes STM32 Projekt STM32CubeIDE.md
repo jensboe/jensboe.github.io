@@ -3,6 +3,7 @@ layout: post
 title:  1. STM32 Projekt mit STM32CubeIDE
 date:   2023-10-06
 categories: STM32
+tags: Software STM32 STM32CubeIDE
 ---
 
 Ich verfüge unter anderem über ein NUCLEO-F446ZE.
@@ -14,7 +15,7 @@ Danach wird geprüft in wie weit man mit C++ statt mit C entwickeln kann und die
 
 Aber fangen wir ersteinmal vorne an.
 
-> Die Schritte in diesem Tutorial sind auch in Github zu finden. <https://github.com/jensboe/STM32FirstSteps>
+> Die Schritte in diesem Tutorial sind auch auf GitHub verfügbar. [STM32FirstSteps](https://github.com/jensboe/STM32FirstSteps)
 {: .prompt-tip }
 
 ## Neues Projekt in STM32CubeIDE anlegen
@@ -44,7 +45,7 @@ Besonders praktisch finde ich `Clock Configuration`, da hier der clock tree des 
 Bei Änderungen erscheint im `Projekt Explorer` inter der *.ioc -Datei der Hinweis `[Code Generation is required]`.
 Diese kann im Reiter `Project` oder per Linksklick auf die *.ioc-Datei gestartet werden.
 
-# Debuggen
+## Debuggen
 Das Debuggen wird mit dem Klick auf den Käfer Toolbar-Knopf gestartet.
 ![Debug Button in Form eines Käfers.](/assets/posts/ErstesSTM32ProjektSTM32CubeIDE/debugbutton.jpg)
 _Debug button_
@@ -59,7 +60,7 @@ _Debugger hält an erster Instruction der main function_
 Mit `Step Into` (`F5`) , `Step Over` (`F6`), `Resume` (`F85`) und `Suspend` kann der Debugger gesteuert werden.
 Mit `Terminate` (`STRG` + `F2`) kann das Debuggen beendet werden.
 
-# Das erste eigene Programm schreiben
+## Das erste eigene Programm schreiben
 
 Das erste eigene Programm soll eine LED blinken lassen.
 Daher schaue ich mir zuerst die `main`-Funktion in der `main.c`-Datei an.
@@ -136,7 +137,7 @@ Wird der Debugger nun gestartet, wird beim Durchsteppen die LD1 aktiviert bzw. d
 Verlässt man den Step-Betrieb, blinkt die LD1 in einem 1Hz Takt.
 
 
-# Weiterführende Links
+## Weiterführende Links
 * [From Zero to main(): Bare metal C](https://interrupt.memfault.com/blog/zero-to-main-1)<br>
 Der Beginn der Zero to main() Serie.
 In diesem Artikel wird beschreiben, wie ein µC nach dem einschalten in der `main`-Funktion landet und was dafür notwendig ist.

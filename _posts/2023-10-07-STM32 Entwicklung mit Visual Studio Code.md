@@ -3,6 +3,7 @@ layout: post
 title: "STM32 Entwicklung mit Visual Studio Code"
 date: 2023-10-07 15:40
 categories: STM32
+tags: [Software, STM32, STM32CubeIDE, VS Code, Cmake]
 ---
 
 STM32CubeIDE, basierend auf Eclipse und bereits über 20 Jahre alt, erschien mir immer etwas schwerfällig, aber dennoch besser als Keil. Mein aktueller Favorit für die Entwicklung von STM32-Mikrocontrollern ist Visual Studio Code (VS Code), den ich bereits in anderen Projekten einsetze, einschließlich der Erstellung dieses Blogs.
@@ -12,11 +13,11 @@ Zu Beginn dieses Jahres hat STMicroelectronics die [STM32 VS Code Extension](htt
 > Die Schritte in diesem Tutorial sind auch auf GitHub verfügbar. [STM32FirstSteps](https://github.com/jensboe/STM32FirstSteps)
 {: .prompt-tip }
 
-# Projekt in Visual Studio Code öffnen
+## Projekt in Visual Studio Code öffnen
 
 Nach der Installation der [STM32 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension) findest du ein STM32-Schmetterlings-Symbol in der linken Symbolleiste. Mit einem Klick darauf kannst du deine Projektdatei `.cproject` öffnen. Während der Einrichtung wird nach der Standardkonfiguration gefragt, und ich wähle `Debug` aus.
 
-# Build
+## Build
 
 Die Projektkonfiguration erfolgt mithilfe von CMake, das ich bereits installiert habe. Ebenso habe ich `ninja` als Alternative zu `make` sowie `arm-none-eabi-gcc` installiert. Alle diese Tools sind bereits in meinem Systempfad enthalten, daher sehen meine Konsolenausgaben wie folgt aus:
 
@@ -36,14 +37,14 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 Das Erstellen der Binärdateien erfolgt einfach per Mausklick auf `F7`.
 
-# Debugging
+## Debugging
 
 Mit `F5` startest du den Debugger. Im Gegensatz zu STM32CubeIDE startet der Debugger nicht in der `main`-Funktion, sondern im `Reset_Handler` der Datei `startup_stm32f446zetx.s`. Daher habe ich manuell einen Breakpoint in der `main`-Funktion gesetzt, zu der der Debugger nach erneutem Drücken von `F5` gelangt. Wenn du dieses Verhalten ändern möchtest, kannst du in der Datei `.vscode\launch.json` den Wert ``stopAtConnect`: true` auf ``stopAtConnect`: false` ändern.
 
 ![Debugansicht in Visual Studio Code](/assets/posts/STM32EntwicklungmitVisualStudioCode/debugging.jpg)
 _Debugansicht in VS Code: Auf der linken Seite werden lokale Variablen, CPU-Register sowie Peripherie-Register angezeigt und können bearbeitet werden. Darüber hinaus gibt es eine Beschreibung der Register._
 
-# Ein Blick hinter die Kulissen
+## Ein Blick hinter die Kulissen
 
 Beim Konvertieren in ein VS Code-Projekt werden eine Vielzahl von Dateien erstellt. Im Verzeichnis `.vscode` findest du Konfigurationsdateien für VS Code. `tasks.json` enthält z.B. den Build-Task, und `launch.json` enthält die Konfiguration für den Bootloader.
 
