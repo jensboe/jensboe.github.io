@@ -37,9 +37,9 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v4
+        uses: ruby/setup-ruby@v5
         with:
-          ruby-version: 3.2.3
+          ruby-version: 3.2
           bundler-cache: false
 
       - name: Build site
