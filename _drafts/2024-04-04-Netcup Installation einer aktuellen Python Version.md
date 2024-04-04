@@ -4,7 +4,15 @@ title:  "netcup: Installation von Python Paketen und aktualisieren der Python Ve
 date:   2024-04-04 20:00
 categories: Website
 tags: netcup Python
+
 ---
+
+Python ist nicht bei vielen Webhostern ohne VPS verfügbar.
+Netcup ist eine Ausnahme.
+Doch leider ist es nicht so einfach, eine vollwertige Python Umgebung einzurichten.
+In dieser Anleitung beschreibe ich, wie ich eine vollwertige Python Umgebung bei netcup eingerichtet habe.
+
+Ich verwende dabei das Webhosting 4000-Angebot.
 
 # Eine andere Python Version bei netcup nutzen
 
@@ -15,7 +23,6 @@ Diese sind somit seit gut vier einhalb Jahren veraltet.
 
 Eine Nachfrage beim Support ergab folgende Antwort:
 >Wir stellen stets die aktuelle Python3-Version aus den Paketquellen des Betriebssystems bereit. Ein Upgrade von 3.7.3 auf 3.9.2 wird voraussichtlich in den nächsten Monaten erfolgen.
-
 Nicht wirklich eine gute Nachricht.
 
 Da ich bei netcup eine Webseite mit Django aufsetzen wollte, stellte sich aber gleich die nächste Frage.
@@ -89,7 +96,7 @@ fi
             offline mode : False
     ```
 
-6.  Mit ` conda update -n base -c defaults conda` kann nun Conda aktualisiert werden werden.
+6.  Mit `conda update -n base -c defaults conda` kann nun Conda aktualisiert werden werden.
     Dies dauert etwas.
     Zwischendurch muss ich mit `y` bestätigt werden, das die Pakete geupdatet werden sollen.
 
@@ -231,3 +238,10 @@ fi
 
 11. Natürlich ist in der virtuellen Umgebung auch pip (und andere Packet-Manger) verfügbar)   .
     Damit die Pakete nicht global, sondern nur in der konkreten virtuellen Umgebung installiert werden, verwende ich `python -m pip install <package>`.
+
+
+# Fazit
+
+Die Installation von Python bietet einige Stolperstellen.
+Wenn diese bewältigt sind, erfolgen die weiteren Schritte.
+Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-04-05-2024-04-04-Netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
