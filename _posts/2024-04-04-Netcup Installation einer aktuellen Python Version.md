@@ -7,12 +7,9 @@ tags: netcup Python
 
 ---
 
-Python ist nicht bei vielen Webhostern ohne VPS verfügbar.
-Netcup ist eine Ausnahme.
-Doch leider ist es nicht so einfach, eine vollwertige Python Umgebung einzurichten.
-In dieser Anleitung beschreibe ich, wie ich eine vollwertige Python Umgebung bei netcup eingerichtet habe.
-
-Ich verwende dabei das Webhosting 4000-Angebot.
+Python ist bei vielen Webhostern ohne VPS nicht verfügbar, aber netcup bildet eine Ausnahme.
+Dennoch gestaltet sich die Einrichtung einer vollständigen Python-Umgebung bei netcup nicht ganz einfach.
+In diesem Leitfaden beschreibe ich, wie ich eine solche Umgebung bei netcup eingerichtet habe, insbesondere im Rahmen des Webhosting 4000-Angebots.
 
 # Eine andere Python Version bei netcup nutzen
 
@@ -29,7 +26,7 @@ Da ich bei netcup eine Webseite mit Django aufsetzen wollte, stellte sich aber g
 
 # Bei netcup Python Pakete installieren
 
-Wenn man sich via SSH mit dem Server verbindet, stellt man schnell fest, das `python` nicht funktioniert.
+Wenn man sich via SSH mit dem Server verbindet, stellt man schnell fest, das der Befehl `python` nur eine Fehlermeldung ausgibt.
 
 Sascha Szott stellt auf seiner [Website](https://saschaszott.github.io/2021/02/14/netcup-python-webhosting.html) eine Weg vor.
 Dabei installiert er Pakete lokal auf dem PC und läd sie anschließend aus dem `site-packages`-Ordner in das Verzeichnis der Webapplikation hoch.
@@ -244,4 +241,4 @@ fi
 
 Die Installation von Python bietet einige Stolperstellen.
 Wenn diese bewältigt sind, erfolgen die weiteren Schritte.
-Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-04-05-2024-04-04-Netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
+<!-- Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-04-05-2024-04-04-netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben. -->
