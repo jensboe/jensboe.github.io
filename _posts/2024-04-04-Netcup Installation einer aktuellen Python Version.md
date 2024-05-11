@@ -1,17 +1,17 @@
 ---
 layout: post
 title:  "netcup: Installation von Python Paketen und aktualisieren der Python Version"
-date:   2024-04-04 20:00
-categories: Website
-tags: netcup Python
+date:   2024-04-04 18:00
+categories: Website 
 
+tags: netcup Python pip miniconda3 Django
 ---
 
 Python ist bei vielen Webhostern ohne VPS nicht verfügbar, aber netcup bildet eine Ausnahme.
 Dennoch gestaltet sich die Einrichtung einer vollständigen Python-Umgebung bei netcup nicht ganz einfach.
 In diesem Leitfaden beschreibe ich, wie ich eine solche Umgebung bei netcup eingerichtet habe, insbesondere im Rahmen des Webhosting 4000-Angebots.
 
-# Eine andere Python Version bei netcup nutzen
+## Eine andere Python Version bei netcup nutzen
 
 Zum Zeitpunkt des Schreibens (4.4.2024) bietet netcup die Python Version 3.7.3 und 2.7.16 an.
 Diese sind am 25.3.2019 ([3.7.3](https://www.python.org/downloads/release/python-373/)) bzw. 4.3.2019 ([2.7.16](https://www.python.org/downloads/release/python-2716/)) erschienen.
@@ -24,7 +24,7 @@ Nicht wirklich eine gute Nachricht.
 
 Da ich bei netcup eine Webseite mit Django aufsetzen wollte, stellte sich aber gleich die nächste Frage.
 
-# Bei netcup Python Pakete installieren
+## Bei netcup Python Pakete installieren
 
 Wenn man sich via SSH mit dem Server verbindet, stellt man schnell fest, das der Befehl `python` nur eine Fehlermeldung ausgibt.
 
@@ -36,7 +36,7 @@ Zusätzlich wird das Applikationsverzeichnis durch viele Abhängigkeiten schnell
 Allerdings bin ich dann auf einen [Forenbeitrag von mhs](https://forum.netcup.de/netcup-anwendungen/wcp-webhosting-control-panel/p156843-wsgi-python-mit-phusion-passenger-auf-webhosting-8000/#post156843) gestoßen.
 Mit seiner Schilderung habe ich es geschafft, eine aktuelle Python version bei netcup zu installieren und ich kann nun pip bei netcup nutzen.
 
-#  Anleitung zum Installieren von Paketen bei netcup
+##  Anleitung zum Installieren von Paketen bei netcup
 
 1.  Ich habe Miniconda3 auf [repo.anaconda.com/miniconda/](https://repo.anaconda.com/miniconda/) heruntergeladen. Genauer die Version [miniconda3-4.5.11-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh).
     Neuere Versionen haben bei mir in den späteren Schritten nicht funktioniert. Daher bin ich den Rat von mhs gefolgt und habe explizit die Version 4.6.11 heruntergeladen. In dne späteren Schritten wird miniconda3 auch noch auf eine neuere Version aktualisiert werden.
@@ -229,7 +229,7 @@ fi
     Python 3.12.2
     ```
 
-10. Für meine einzelnen Webseiten lege ich seperate virtuelle Umgebungen an.
+10. Für meine einzelnen Webseiten lege ich separate virtuelle Umgebungen an.
     Dies mache ich mit dem Kommando `conda create -n myWebsite python=3.12`.
     Der Wechsel (innerhalb von SSH) erfolgt dann via `conda activate myWebsite`.
 
@@ -237,7 +237,8 @@ fi
     Damit die Pakete nicht global, sondern nur in der konkreten virtuellen Umgebung installiert werden, verwende ich `python -m pip install <package>`.
 
 
-# Fazit
+## Fazit
 
 Die Installation von Python bietet einige Stolperstellen.
 Wenn diese bewältigt sind, erfolgen die weiteren Schritte.
+Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-05-11-netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
