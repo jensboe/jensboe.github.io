@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "netcup: Erstellen der passenger-wsgi.py für Django"
-date:   2024-04-05 20:00
+date:   2024-05-11 13:00
 categories: Website
 tags: netcup Python pip miniconda3 Django
 
