@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "netcup: Installation von Python Paketen und aktualisieren der Python Version"
-date:   2024-04-04 20:00
-categories: Website
-tags: netcup Python
+date:   2024-04-04 18:00
+categories: Website 
 
+tags: netcup Python pip miniconda3 Django
 ---
 
 Python ist bei vielen Webhostern ohne VPS nicht verfügbar, aber netcup bildet eine Ausnahme.
@@ -241,3 +241,4 @@ fi
 
 Die Installation von Python bietet einige Stolperstellen.
 Wenn diese bewältigt sind, erfolgen die weiteren Schritte.
+Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-04-05-2024-04-04-netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
