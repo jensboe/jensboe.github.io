@@ -3,22 +3,23 @@ layout: post
 title:  "netcup: Erstellen der passenger-wsgi.py für Django"
 date:   2024-04-05 20:00
 categories: Website
-tags: netcup Python
+tags: netcup Python pip miniconda3 Django
 
 ---
 
-Zum [vollwertiges Python und pip bei netcup nutzen]({%post_url 2024-04-04-Netcup Installation einer aktuellen Python Version %}) habe ich einen eigenen Beitrag geschrieben, hier wird nun der Inhalt der passenger-wsgi.py beschrieben.
+Nachdem ich bereits einen Beitrag zum Thema [vollwertiges Python und pip bei netcup nutzen]({% post_url 2024-04-04-Netcup Installation einer aktuellen Python Version %}) verfasst habe, möchte ich nun den Inhalt der passenger-wsgi.py näher erläutern.
 
-# Voraussetzungen
+## Voraussetzungen
 
-Für jede Webseite lege ich eine seperate Conda Umgebung an.
-Für diese Beispiel verwendet ich `mywebsite`.
+Für jede meiner Webseiten erstelle ich eine separate Conda-Umgebung.
+In diesem Beispiel verwende ich `mywebsite`.
 
+## Korrekten Interpreter aufrufen
 
-# Korrekten Interpreter aufrufen.
-Der User, der die pessanger-wsgi.py ausführt ist nicht der FTP User.
-Daher lässt sich der Python Interpreter nicht so einfach finden, zusätzlich müssen wir ihn direkt aufrufen.
-Dazu verwende ich nachfolgendes Script, welches mir für spätere Updates oder weitere Seiten eine einfach Anpassung ermöglicht.
+Der Benutzer, der die passenger-wsgi.py ausführt, ist nicht der FTP-Benutzer.
+Daher ist der Python-Interpreter nicht ohne Weiteres auffindbar, und wir müssen ihn direkt mit dem vollen Pfad aufrufen.
+Das folgende Skript erleichtert mir spätere Updates oder Anpassungen für weitere Seiten:
+
 ```python
 import os
 import sys
@@ -29,26 +30,29 @@ MINICONDA_ROOT = "/miniconda3"
 
 INTERP = os.environ["HOME"]+MINICONDA_ROOT+"/envs/"+APP_SPECIFIC_VENV+"/bin/"+PYTHON_VERSION
 ```
-Via `sys.executable` kann der Pfad des aktuellen Interpreters herausgefunden werden.
-Beim ersten Aufruf wird der Interpreter nicht dem Pfad entsprechen.
-In dem Fall Rufen wir mit `os.execl` den korrekten Interpreter auf.
+
+Mithilfe von `sys.executable` lässt sich der Pfad des aktuell genutzten Interpreters ermitteln.
+Stimmt dieser beim ersten Aufruf nicht mit dem gewünschten Pfad überein, rufen wir mit `os.execl` den korrekten Interpreter auf:
+
 ```python
 if sys.executable != INTERP:
     os.execl(INTERP, INTERP, *sys.argv)
 ```
-Nun kann der reguläre Code einer wsgi Datei von Django folgen.
-DAbei muss der Pfad zum `DJANGO_SETTINGS_MODULE` natürlich noch angepasst werden.
+
+Anschließend folgt der reguläre Code einer Django-wsgi-Datei.
+Der Pfad zum `DJANGO_SETTINGS_MODULE` muss entsprechend angepasst werden:
+
 ```python
 from django.core.wsgi import get_wsgi_application # pylint: disable=wrong-import-position
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'path.site.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mywebsite.settings')
 application = get_wsgi_application()
 ```
 
-# Python im Webhosting Control Panel aktivieren
+## Python im Webhosting Control Panel aktivieren
 
-Python muss für die entsprechende Seite im Webhosting Control Panel eingeschaltet werden.
-Der Modus sollte nur zur Testphase auf `Entwicklung` stehen, da im Fehlerfall viele Informationen angezeigt werden, die besser nicht in einem Produktivsystem angezeigt werden sollten.
+Python muss im Webhosting Control Panel von netcup für die betreffende Seite aktiviert werden.
+Der Modus sollte während der Testphase auf `Entwicklung` gesetzt sein, da im Fehlerfall viele Informationen angezeigt werden, die besser nicht in einem Produktivsystem angezeigt werden sollten.
 
 ![Python Einstellungen im Webhosting Controll panel](/assets/posts/netcup_python/python_settings.png)
 
