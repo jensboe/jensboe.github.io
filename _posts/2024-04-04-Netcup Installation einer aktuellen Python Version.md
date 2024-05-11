@@ -229,7 +229,7 @@ fi
     Python 3.12.2
     ```
 
-10. Für meine einzelnen Webseiten lege ich seperate virtuelle Umgebungen an.
+10. Für meine einzelnen Webseiten lege ich separate virtuelle Umgebungen an.
     Dies mache ich mit dem Kommando `conda create -n myWebsite python=3.12`.
     Der Wechsel (innerhalb von SSH) erfolgt dann via `conda activate myWebsite`.
 
