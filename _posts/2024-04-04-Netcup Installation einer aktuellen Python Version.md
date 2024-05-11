@@ -241,4 +241,4 @@ fi
 
 Die Installation von Python bietet einige Stolperstellen.
 Wenn diese bewältigt sind, erfolgen die weiteren Schritte.
-Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-04-05-2024-04-04-netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
+Zum [Erstellen der passanger-wsgi.py Datei für Django]({%post_url 2024-05-11-netcup Erstellen der passenger-wsgi.py für Django %}) habe ich einen eigenen Beitrag geschrieben.
