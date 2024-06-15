@@ -6,6 +6,9 @@ categories: STM32
 tags: [Software, STM32, STM32CubeIDE, VS Code, Cmake]
 ---
 
+> Diese Anleitung ist veraltet. ST hat die Erweiterung aktualisiert und der Weg ist nun etwas anders und vielleicht auch etwas vereinfacht. Sofern ich zeit habe, werde ich die Anleitung aktualisieren.
+{: .prompt-warnung }
+
 STM32CubeIDE, basierend auf Eclipse und bereits über 20 Jahre alt, erschien mir immer etwas schwerfällig, aber dennoch besser als Keil. Mein aktueller Favorit für die Entwicklung von STM32-Mikrocontrollern ist Visual Studio Code (VS Code), den ich bereits in anderen Projekten einsetze, einschließlich der Erstellung dieses Blogs.
 
 Zu Beginn dieses Jahres hat STMicroelectronics die [STM32 VS Code Extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension) veröffentlicht, die die STM32-Entwicklung mit VS Code stark vereinfacht.
