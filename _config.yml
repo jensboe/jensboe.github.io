@@ -37,13 +37,14 @@ social:
     # The first element serves as the copyright owner's link
     - https://github.com/JensBoe
 
-google_site_verification: gwl-LSnKHy5wEwBfe4Am3QhQ1cA0QypmUQI-HtBIZmY
+webmaster_verifications:
+  google: gwl-LSnKHy5wEwBfe4Am3QhQ1cA0QypmUQI-HtBIZmY
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: G-R9S36PQQXY
+analytics:
+  google: G-R9S36PQQXY
 
 # Prefer color scheme setting.
 #
@@ -66,7 +67,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/avatar.png
+avatar: https://avatars.githubusercontent.com/u/13820838?s=400&v=4
 
 # boolean type, the global switch for TOC in posts.
 toc: true
